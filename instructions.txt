@@ -1,0 +1,16 @@
+To show your current understanding of Python, you will upload a code from scratch.
+
+Your code must:
+
+Import the Turtle Library
+Create a turtle
+Change the color or shape of the turtle
+Use a for loop to repetitively draw a shape of your choosing.
+Do not have the program draw the shape on top of itself.  Move the turtle before drawing another shape.
+The shape must be repeated a number of times indicated by the user.
+(Use the Input function)
+These are the minimum requirements.  Here are some ideas to expand your code, but don't feel limited to them.
+
+Allow the user to choose the color or shape of the turtle.
+Allow the user to choose the shape that the turtle draws
+Draw multiple different shapes
