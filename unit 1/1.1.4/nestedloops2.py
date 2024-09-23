@@ -12,7 +12,8 @@ move_x = 1
 move_y = 1
 
 while True:
-	while x <= 100:
+	move_x = 1
+	while x <= 100 and move_x == 1:
 		while y < 100:
 			x = x + move_x
 			y = y + move_y
@@ -25,19 +26,25 @@ while True:
 			painter.goto(x, y)
 		move_y = 1
 
-	while x >= -100:
-		while y <= 100 and y > 0:
-			x = x - move_x
-			y = y - move_y
-			painter.goto(x, y)
+	move_x = -1
+
+	while move_x == -1 and x >= -200:
 		move_y = -1
-	
-		while y > -100 and y < 0:
-			x = x - move_x
+		while y <= 0 and y > -100:
+			print("1")
+			x = x + move_x
 			y = y + move_y
 			painter.goto(x, y)
-		move_y = -1
-	 
-
+ 
+		while y < 0 and x >= 200:
+			move_y = 1
+			print("2")
+			x = x + move_x
+			y = y + move_y
+			painter.goto(x, y)
+			break
+		break
+	move_x == 1
+   
 wn = trtl.Screen()
 wn.mainloop()
