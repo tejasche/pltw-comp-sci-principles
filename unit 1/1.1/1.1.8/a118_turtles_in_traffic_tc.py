@@ -34,14 +34,44 @@ for s in turtle_shapes:
     tloc += 50
 
 # TODO: move turtles across and down screen, stopping for collisions
+hvel = 3
+vvel = 3
+shorter = True
+
 for step in range(50):
     for h in horiz_turtles:
         for v in vert_turtles:
-            h.forward(3)
-            v.forward(3)
+            h.forward(hvel)
+            v.forward(vvel)
+            
+            if hvel <= 5:
+                shorter = True
+            
+            if hvel <= 10 and shorter:
+                hvel += 1
+                vvel += 1
+                
+            if hvel > 10:
+                hvel -= 1
+                vvel -= 1
+                shorter = False
+                
             if abs(h.xcor() - v.xcor()) < 20:
+                newshape = turtle_shapes.pop()
+                h.fillcolor("red")
+                h.shape(newshape)
                 horiz_turtles.remove(h)
+                
             if abs(h.ycor() - v.ycor()) < 20:
+                newshape = turtle_shapes.pop()
+                v.fillcolor("gray")
+                v.shape(newshape)
+                vert_turtles.remove(v)
+                
+            if h.xcor() >= 350:
+                horiz_turtles.remove(h)
+                
+            if v.ycor() >= 350:
                 vert_turtles.remove(v)
 
 wn = trtl.Screen()
