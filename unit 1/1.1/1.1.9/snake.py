@@ -83,7 +83,7 @@ def text(turtl, text):
 	turtl.write(str(text), font = ("Roboto", 16), align = "center")
 
 #set the difficulty identified by the user
-difficulty = turtle.textinput("Difficulty", "Enter difficulty level (easy, medium or hard): ")
+difficulty = turtle.textinput("Difficulty", "Enter difficulty level (easy, medium, hard or extreme): ")
 correct = True
 while correct:
 	if difficulty == "easy":
@@ -96,6 +96,10 @@ while correct:
 
 	elif difficulty == "hard":
 		speed = 3
+		correct = False
+  
+	elif difficulty == "extreme":
+		speed = 5
 		correct = False
 
 	else:
