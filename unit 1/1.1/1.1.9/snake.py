@@ -8,14 +8,13 @@ turtle.bgcolor("lightgreen")
 turtle.title("Snake Game")
 turtle.penup()
 turtle.hideturtle()
-turtle.setup(600, 600)
 turtle.goto(0, 275)
+turtle.setup(600, 600)
 
 # setup images
 turtle.register_shape("snakeimg.gif")
 turtle.register_shape("appleimg.gif")
 snakeimg = Image.open("snakeimg.gif")
-appleimg = Image.open("appleimg.gif")
 snakeimg = ImageOps.expand(snakeimg, border = 100, fill = (255, 255, 255, 0)) #increase the size of the image without changing the snake
 
 degree = 0
@@ -79,9 +78,9 @@ def slow():
 	speed -= 1
 
 #function to easily display text
-def text(text):
-	turtle.clear()
-	turtle.write(str(text), font = ("Roboto", 16), align = "center")
+def text(turtl, text):
+	turtl.clear()
+	turtl.write(str(text), font = ("Roboto", 16), align = "center")
 
 #set the difficulty identified by the user
 difficulty = turtle.textinput("Difficulty", "Enter difficulty level (easy, medium or hard): ")
@@ -111,21 +110,26 @@ turtle.onkey(left, "Left")
 turtle.onkey(right, "Right")
 turtle.listen()
  
-scoren = -1  
+scoren = -1
+gameoverturtle = turtle.Turtle()
+gameoverturtle.penup()
+gameoverturtle.hideturtle()
+gameoverturtle.goto(0, 252)
 
 running = True
 while running:
 	snake.forward(speed)
 	#check for collision with the border and end game if so
 	if snake.xcor() > 300 or snake.xcor() < -300 or snake.ycor() > 300 or snake.ycor() < -300:
-		turtle.goto(0, 252)
-		text(f"\nGame Over\n  Score: {scoren}") #display game over and score
+		turtle.goto(0, 275)
+		text(turtle, "Game Over") #display game over and score
+		text(gameoverturtle, f"Final Score: {scoren}")
 		running = False
 
 	#check for collision with the apple and increase score
 	if math.hypot(snake.xcor() - apple.xcor(), snake.ycor() - apple.ycor()) < 50:
 		apple.setpos(random.randint(-275, 275), random.randint(-275, 275))
 		scoren += 1
-		text(f"Score: {scoren}")
+		text(turtle, f"Score: {scoren}")
 
 turtle.mainloop()
