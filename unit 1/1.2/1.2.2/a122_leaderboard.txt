@@ -1,3 +1,6 @@
 Pat,50
 Jack,42
 Jill,38
+Tejas,4
+Bob,3
+James,5
